@@ -30,7 +30,7 @@ const descriptionStyle = {
 };
 
 const spinner = (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/200px-Spinner_font_awesome.svg.png"
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/200px-Spinner_font_awesome.svg.png" // eslint-disable-line
          alt="Loading image"
          style={imageStyle}
     />

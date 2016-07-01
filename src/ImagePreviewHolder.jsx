@@ -1,8 +1,8 @@
 import React from 'react/react';
 
-import ImageFrame from './ImageFrame';
-import ImagesContainer from './ImagesContainer';
-import NavigationArrow from './NavigationArrow';
+import ImageFrame from './ImageFrame'; // eslint-disable-line
+import ImagesContainer from './ImagesContainer'; // eslint-disable-line
+import NavigationArrow from './NavigationArrow'; // eslint-disable-line
 
 const ripHolderStyle = {
     position: 'fixed',
@@ -32,7 +32,7 @@ function processGalleryImages(context, onClickAction) {
                 title: imageLink.title
             };
 
-            imageLink.onclick = onClickAction.bind(context, imageProps);
+            imageLink.onclick = onClickAction.bind(context, imageProps); // eslint-disable-line
             imagesData.push(imageProps);
         }
     });
@@ -85,8 +85,7 @@ class ImagePreviewHolder extends React.Component {
 
         this.windowResizeHandelerTimeoutId = null;
 
-        this.windowResizeHandeler = (event) => {
-            console.log('Window resize:', event);
+        this.windowResizeHandeler = () => {
             if (this.windowResizeHandelerTimeoutId) {
                 clearTimeout(this.windowResizeHandelerTimeoutId);
             }
