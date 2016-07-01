@@ -1,6 +1,6 @@
 {
   "name": "image-preview",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple component for displaying images",
   "main": "index.js",
   "scripts": {
