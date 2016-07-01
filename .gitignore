@@ -1,0 +1,9 @@
+*~
+*.iml
+.coveralls.yml
+.idea
+.nyc_output
+node_modules
+npm-debug.log
+lib
+demo/demo-bundle.js

@@ -1,0 +1,32 @@
+{
+  "env": {
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb/base",
+  "globals": {
+    "describe": true,
+    "it": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "indent": [
+      "error",
+      4
+    ],
+    "max-len": [
+      "error",
+      120
+    ],
+    "no-underscore-dangle": [
+      "error",
+      { "allowAfterThis": true }
+    ]
+  }
+}
