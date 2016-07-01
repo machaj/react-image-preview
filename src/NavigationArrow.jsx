@@ -18,13 +18,13 @@ class NavigationArrow extends React.Component {
         if (this.props.orientation === 'left') {
             arrow = (
                 <div style={arrowLeftStyle} onClick={this.props.clickAction}>
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 </div>
             );
         } else {
             arrow = (
                 <div style={arrowRightStyle} onClick={this.props.clickAction}>
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </div>
             );
         }

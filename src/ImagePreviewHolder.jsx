@@ -9,7 +9,8 @@ const ripHolderStyle = {
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
+    zIndex: 1000
 };
 
 const ripHolderCloseButtonStyle = {
@@ -151,7 +152,7 @@ class ImagePreviewHolder extends React.Component {
                 <div style={ripHolderStyle}>
                     <ImagesContainer translateX={this.state.currentIndex * window.innerWidth} images={images} />
                     <div style={ripHolderCloseButtonStyle} onClick={this.close}>
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </div>
                     {leftArrow}
                     {rightArrow}
