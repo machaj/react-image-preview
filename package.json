@@ -29,6 +29,9 @@
     "url": "https://github.com/machaj/react-image-preview/issues"
   },
   "homepage": "https://github.com/machaj/react-image-preview#readme",
+  "dependencies": {
+    "prefix": "^1.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.7.0",
