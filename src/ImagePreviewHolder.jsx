@@ -11,7 +11,9 @@ const ripHolderStyle = {
     left: 0,
     right: 0,
     zIndex: 1000,
-    background: 'rgba(0, 0, 0, 0.9)'
+    background: 'rgba(0, 0, 0, 0.9)',
+    color: 'white',
+    userSelect: 'none'
 };
 
 const ripHolderCloseButtonStyle = {
@@ -19,7 +21,8 @@ const ripHolderCloseButtonStyle = {
     top: 0,
     right: 0,
     padding: '20px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    fontSize: '2em'
 };
 
 function processGalleryImages(context, onClickAction) {

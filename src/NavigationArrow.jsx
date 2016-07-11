@@ -1,12 +1,14 @@
 import React from 'react/react';
+import prefixStyles from './prefixStyles';
 
-const arrowStyle = {
+const arrowStyle = prefixStyles({
     position: 'absolute',
     height: '100%',
     top: '45%',
     padding: '20px',
-    cursor: 'pointer'
-};
+    cursor: 'pointer',
+    fontSize: '2em'
+});
 
 const arrowLeftStyle = Object.assign({ left: 0 }, arrowStyle);
 const arrowRightStyle = Object.assign({ right: 0 }, arrowStyle);

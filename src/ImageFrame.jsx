@@ -1,23 +1,24 @@
 import React from 'react/react';
 
 import getPictureDimensions from './getPictureDimensions';
+import prefixStyles from './prefixStyles';
 
-const imageFrameStyle = {
+const imageFrameStyle = prefixStyles({
     position: 'absolute',
     top: 0,
     bottom: 0,
     background: 'rgba(0, 0, 0, 0.2)',
     opacity: 0
-};
+});
 
-const imageStyle = {
+const imageStyle = prefixStyles({
     position: 'absolute',
     left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)'
-};
+});
 
-const descriptionStyle = {
+const descriptionStyle = prefixStyles({
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -26,8 +27,9 @@ const descriptionStyle = {
     color: 'white',
     background: 'rgba(0, 0, 0, 0.5)',
     paddingTop: '10px',
-    paddingLeft: '10px'
-};
+    paddingLeft: '10px',
+    textAlign: 'center'
+});
 
 const spinner = (
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/200px-Spinner_font_awesome.svg.png" // eslint-disable-line

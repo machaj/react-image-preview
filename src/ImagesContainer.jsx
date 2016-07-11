@@ -1,10 +1,11 @@
 import React from 'react/react';
+import prefixStyles from './prefixStyles';
 
-const imagesContainerStyle = {
+const imagesContainerStyle = prefixStyles({
     position: 'relative',
     height: '100%',
     transition: 'all 0.2s'
-};
+});
 
 class ImagesContainer extends React.Component {
     render() {
