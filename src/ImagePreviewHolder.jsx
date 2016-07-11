@@ -10,7 +10,8 @@ const ripHolderStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: 1000
+    zIndex: 1000,
+    background: 'rgba(0, 0, 0, 0.9)'
 };
 
 const ripHolderCloseButtonStyle = {
@@ -45,6 +46,7 @@ class ImagePreviewHolder extends React.Component {
     constructor() {
         super();
         this.images = null;
+        this.bodyOverflow = null;
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight
@@ -107,6 +109,11 @@ class ImagePreviewHolder extends React.Component {
 
     componentWillMount() {
         this.images = processGalleryImages(this, this.imageLinkClickCallback);
+        window.addEventListener('resize', this.windowResizeHandeler);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.windowResizeHandeler);
     }
 
     render() {
@@ -114,7 +121,8 @@ class ImagePreviewHolder extends React.Component {
 
         if (this.state.open) {
             document.addEventListener('keydown', this.keyDownHandler);
-            window.addEventListener('resize', this.windowResizeHandeler);
+            this.bodyOverflow = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
             const images = [];
             let leftArrow = null;
             let rightArrow = null;
@@ -160,7 +168,7 @@ class ImagePreviewHolder extends React.Component {
             );
         } else {
             document.removeEventListener('keydown', this.keyDownHandler);
-            window.removeEventListener('resize', this.windowResizeHandeler);
+            document.body.style.overflow = this.bodyOverflow;
         }
 
         return holder;
