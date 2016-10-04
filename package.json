@@ -4,14 +4,13 @@
   "description": "Simple component for displaying images",
   "main": "index.js",
   "scripts": {
-    "bundle": "webpack",
     "compile": "babel -d lib/ src/",
     "compile:watch": "babel -w -d lib/ src/",
+    "compile:demo": "webpack -w",
     "coverage": "nyc npm test",
     "coverage:lcov": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint . --ext .jsx,.js",
     "prepublish": "npm run compile",
-    "start": "node lib/CountdownCLI.js",
     "test": "mocha --compilers js:babel-core/register",
     "release:patch": "npm test && npm run lint && npm run compile && npm version patch && npm publish"
   },
