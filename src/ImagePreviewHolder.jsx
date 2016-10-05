@@ -3,26 +3,36 @@ import React from 'react/react';
 import ImageFrame from './ImageFrame'; // eslint-disable-line
 import ImagesContainer from './ImagesContainer'; // eslint-disable-line
 import NavigationArrow from './NavigationArrow'; // eslint-disable-line
+import SimpleLoader from './SimpleLoader'; // eslint-disable-line
 
-const ripHolderStyle = {
+const defaultConfig = {
+    leftArrowIcon: <span>←</span>,
+    rightArrowIcon: <span>→</span>,
+    closeIcon: <span>&#10006;</span>,
+    loader: <SimpleLoader/>,
+    iconFontColor: 'white',
+    iconFontSize: '3em',
+    imageBackgroundColor: 'rgba(0, 0, 0, 0.9)',
+    textBackgroundColor: ''
+};
+
+const defaultImageHolderStyle = {
     position: 'fixed',
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
     zIndex: 1000,
-    background: 'rgba(0, 0, 0, 0.9)',
     color: 'white',
     userSelect: 'none'
 };
 
-const ripHolderCloseButtonStyle = {
+const closeButtonDefaultStyle = {
     position: 'absolute',
     top: 0,
     right: 0,
     padding: '20px',
-    cursor: 'pointer',
-    fontSize: '2em'
+    cursor: 'pointer'
 };
 
 function processGalleryImages(context, onClickAction) {
@@ -111,6 +121,15 @@ class ImagePreviewHolder extends React.Component {
     }
 
     componentWillMount() {
+        this.config = Object.assign(defaultConfig, this.props.config);
+        this.imageHolderStyle = Object.assign(defaultImageHolderStyle, {
+            background: this.config.imageBackgroundColor
+        });
+
+        this.closeButtonStyle = Object.assign(closeButtonDefaultStyle, {
+            fontSize: this.config.iconFontSize,
+            color: this.config.iconFontColor
+        });
         this.images = processGalleryImages(this, this.imageLinkClickCallback);
         window.addEventListener('resize', this.windowResizeHandeler);
     }
@@ -132,13 +151,21 @@ class ImagePreviewHolder extends React.Component {
 
             if (this.state.currentIndex > 0) {
                 leftArrow = (
-                    <NavigationArrow orientation='left' clickAction={this.decrementIndex} />
+                    <NavigationArrow orientation='left' clickAction={this.decrementIndex}
+                        fontSize={this.config.iconFontSize} fontColor={this.config.iconFontColor}
+                    >
+                        {this.config.leftArrowIcon}
+                    </NavigationArrow>
                 );
             }
 
             if (this.state.currentIndex < this.images.length - 1) {
                 rightArrow = (
-                    <NavigationArrow orientation='right' clickAction={this.incrementIndex} />
+                    <NavigationArrow orientation='right' clickAction={this.incrementIndex}
+                         fontSize={this.config.iconFontSize} fontColor={this.config.iconFontColor}
+                    >
+                        {this.config.rightArrowIcon}
+                    </NavigationArrow>
                 );
             }
 
@@ -156,14 +183,15 @@ class ImagePreviewHolder extends React.Component {
                         title={image.title}
                         visible={visible}
                         width={this.state.width}
+                        loader={this.config.loader}
                     />);
             });
 
             holder = (
-                <div style={ripHolderStyle}>
+                <div style={this.imageHolderStyle}>
                     <ImagesContainer translateX={this.state.currentIndex * window.innerWidth} images={images} />
-                    <div style={ripHolderCloseButtonStyle} onClick={this.close}>
-                        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <div style={this.closeButtonStyle} onClick={this.close}>
+                        {this.config.closeIcon}
                     </div>
                     {leftArrow}
                     {rightArrow}

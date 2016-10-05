@@ -31,32 +31,22 @@ const descriptionStyle = prefixStyles({
     textAlign: 'center'
 });
 
-const spinner = (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/200px-Spinner_font_awesome.svg.png" // eslint-disable-line
-         alt="Loading image"
-         style={imageStyle}
-    />
-);
+function renderImage(props, image) {
+    const dimensions = getPictureDimensions(props.width,
+        props.height,
+        image.width,
+        image.height
+    );
 
-function renderImage(props, image, isLoaded) {
-    if (isLoaded) {
-        const dimensions = getPictureDimensions(props.width,
-            props.height,
-            image.width,
-            image.height
-        );
-
-        return (
-            <img src={props.link}
-                 alt={props.title}
-                 title={props.title}
-                 height={dimensions.height}
-                 width={dimensions.width}
-                 style={imageStyle}
-            />
-        );
-    }
-    return spinner;
+    return (
+        <img src={props.link}
+             alt={props.title}
+             title={props.title}
+             height={dimensions.height}
+             width={dimensions.width}
+             style={imageStyle}
+        />
+    );
 }
 
 function updateFrameStyle(props) {
@@ -96,9 +86,12 @@ class ImageFrame extends React.Component {
     }
 
     render() {
+        const image = this.state.loaded ?
+            renderImage(this.props, this.img) : (<div style={imageStyle}>{this.props.loader}</div>);
+
         return (
             <div style={this.frameStyle}>
-                {renderImage(this.props, this.img, this.state.loaded)}
+                {image}
                 <div style={descriptionStyle}>
                     {this.props.title}
                 </div>
@@ -114,8 +107,8 @@ ImageFrame.propTypes = {
     link: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
     visible: React.PropTypes.bool,
-    width: React.PropTypes.number.isRequired
-
+    width: React.PropTypes.number.isRequired,
+    loader: React.PropTypes.element.isRequired
 };
 
 export default ImageFrame;
