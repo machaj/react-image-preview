@@ -24,8 +24,6 @@ const descriptionStyle = prefixStyles({
     left: 0,
     right: 0,
     height: '40px',
-    color: 'white',
-    background: 'rgba(0, 0, 0, 0.5)',
     paddingTop: '10px',
     paddingLeft: '10px',
     textAlign: 'center'
@@ -78,6 +76,10 @@ class ImageFrame extends React.Component {
     componentWillMount() {
         this.loadImage();
         this.frameStyle = updateFrameStyle(this.props);
+        this.descriptionStyle = Object.assign(descriptionStyle, {
+            color: this.props.descriptionColor,
+            backgroundColor: this.props.descriptionBackgroundColor,
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -92,7 +94,7 @@ class ImageFrame extends React.Component {
         return (
             <div style={this.frameStyle}>
                 {image}
-                <div style={descriptionStyle}>
+                <div style={this.descriptionStyle}>
                     {this.props.title}
                 </div>
             </div>
@@ -108,7 +110,9 @@ ImageFrame.propTypes = {
     title: React.PropTypes.string.isRequired,
     visible: React.PropTypes.bool,
     width: React.PropTypes.number.isRequired,
-    loader: React.PropTypes.element.isRequired
+    loader: React.PropTypes.element.isRequired,
+    descriptionColor: React.PropTypes.string.isRequired,
+    descriptionBackgroundColor: React.PropTypes.string.isRequired,
 };
 
 export default ImageFrame;

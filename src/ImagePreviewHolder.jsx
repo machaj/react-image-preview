@@ -4,16 +4,18 @@ import ImageFrame from './ImageFrame'; // eslint-disable-line
 import ImagesContainer from './ImagesContainer'; // eslint-disable-line
 import NavigationArrow from './NavigationArrow'; // eslint-disable-line
 import SimpleLoader from './SimpleLoader'; // eslint-disable-line
+import Icon from './Icon'; // eslint-disable-line
 
 const defaultConfig = {
-    leftArrowIcon: <span>←</span>,
-    rightArrowIcon: <span>→</span>,
-    closeIcon: <span>&#10006;</span>,
+    leftArrowIcon: <Icon content='←'/>,
+    rightArrowIcon: <Icon content='→'/>,
+    closeIcon: <Icon content='&#10006;'/>,
     loader: <SimpleLoader/>,
     iconFontColor: 'white',
     iconFontSize: '3em',
     imageBackgroundColor: 'rgba(0, 0, 0, 0.9)',
-    textBackgroundColor: ''
+    textColor: 'white',
+    textBackgroundColor: 'rgba(0, 0, 0, 0.5)'
 };
 
 const defaultImageHolderStyle = {
@@ -36,11 +38,11 @@ const closeButtonDefaultStyle = {
 };
 
 function processGalleryImages(context, onClickAction) {
-    const imageNodes = document.getElementsByClassName('rip');
+    const imageNodes = document.getElementsByClassName('image-preview');
     const imagesData = [];
 
     Array.from(imageNodes).forEach((imageLink, index) => {
-        if (imageLink.rel === 'rip') {
+        if (imageLink.rel === 'image-preview') {
             const imageProps = {
                 index,
                 link: imageLink.href,
@@ -184,6 +186,8 @@ class ImagePreviewHolder extends React.Component {
                         visible={visible}
                         width={this.state.width}
                         loader={this.config.loader}
+                        descriptionColor={this.config.textColor}
+                        descriptionBackgroundColor={this.config.textBackgroundColor}
                     />);
             });
 

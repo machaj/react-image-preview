@@ -6,6 +6,19 @@ function updateIndex() {
     this.setState({ index: (newIndex < 4 ? newIndex + 1 : 0) });
 }
 
+const frames = [
+    '▹ ▹ ▹ ▹ ▹',
+    '▸ ▹ ▹ ▹ ▹',
+    '▹ ▸ ▹ ▹ ▹',
+    '▹ ▹ ▸ ▹ ▹',
+    '▹ ▹ ▹ ▸ ▹',
+    '▹ ▹ ▹ ▹ ▸'
+];
+
+const loaderStyle = {
+    fontSize: '2em'
+};
+
 class SimpleLoader extends React.Component {
     constructor() {
         super();
@@ -23,22 +36,8 @@ class SimpleLoader extends React.Component {
     render() {
         this.timerId = setTimeout(this.updateIndex, 700);
 
-        const loaderElements = [];
-        for (let i = 0; i < 5; i ++) {
-            const style = {
-                position: 'relative',
-                top: (i === this.state.index ? '-10px' : 0)
-            };
-
-            loaderElements.push(
-                <span key={i} style={style}>&#9675;</span>
-            );
-        }
-
         return (
-            <div>
-                {loaderElements}
-            </div>
+            <div style={loaderStyle}>{frames[this.state.index]}</div>
         );
     }
 }
