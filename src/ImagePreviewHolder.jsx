@@ -80,6 +80,9 @@ class ImagePreviewHolder extends React.Component {
         };
 
         this.close = () => {
+            document.removeEventListener('keydown', this.keyDownHandler);
+            document.body.style.overflow = this.bodyOverflow;
+            this.bodyOverflow = null;
             this.setState({ open: false });
         };
 
@@ -144,12 +147,15 @@ class ImagePreviewHolder extends React.Component {
         let holder = null;
 
         if (this.state.open) {
-            document.addEventListener('keydown', this.keyDownHandler);
-            this.bodyOverflow = document.body.style.overflow;
-            document.body.style.overflow = 'hidden';
             const images = [];
             let leftArrow = null;
             let rightArrow = null;
+
+            if (this.bodyOverflow === null) {
+                document.addEventListener('keydown', this.keyDownHandler);
+                this.bodyOverflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+            }
 
             if (this.state.currentIndex > 0) {
                 leftArrow = (
@@ -201,9 +207,6 @@ class ImagePreviewHolder extends React.Component {
                     {rightArrow}
                 </div>
             );
-        } else {
-            document.removeEventListener('keydown', this.keyDownHandler);
-            document.body.style.overflow = this.bodyOverflow;
         }
 
         return holder;
