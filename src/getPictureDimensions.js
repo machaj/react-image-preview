@@ -13,13 +13,13 @@ const getPictureDimensions = function getPictureDimensions(deviceWidth, deviceHe
         };
     } else if (deviceWidth > pictureWidth && deviceHeight < pictureHeight) {
         return {
-            width: getMinorDimenson(imageRatio, deviceHeight),
+            width: deviceHeight * imageRatio,
             height: deviceHeight
         };
     } else if (deviceWidth < pictureWidth && deviceHeight > pictureHeight) {
         return {
             width: deviceWidth,
-            height: getMinorDimenson(imageRatio, deviceWidth)
+            height: deviceWidth / imageRatio
         };
     }
 
@@ -29,11 +29,11 @@ const getPictureDimensions = function getPictureDimensions(deviceWidth, deviceHe
     if (widthRatio > heightRatio) {
         return {
             width: deviceWidth,
-            height: getMinorDimenson(imageRatio, deviceWidth)
+            height: deviceWidth / imageRatio
         };
     }
     return {
-        width: getMinorDimenson(imageRatio, deviceHeight),
+        width: deviceHeight * imageRatio,
         height: deviceHeight
     };
 };

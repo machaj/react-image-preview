@@ -27,6 +27,7 @@ describe('Image height is greater than the height of the device.', () => {
 
             expect(result.width).toBeLessThan(deviceWidth);
             expect(result.height).toBe(deviceHeight);
+            expect(result.width).toBeLessThan(result.height);
         });
     });
 
@@ -40,6 +41,7 @@ describe('Image height is greater than the height of the device.', () => {
 
             expect(result.width).toBeLessThan(deviceWidth);
             expect(result.height).toBe(deviceHeight);
+            expect(result.height).toBeLessThan(result.width);
         });
     });
 });
@@ -49,12 +51,13 @@ describe('Image width is greater than the width of the device.', () => {
         it('should return picture dimensions', () => {
             const deviceWidth = 300;
             const deviceHeight = 800;
-            const pictureWidth = 2000;
-            const pictureHeight = 200;
+            const pictureWidth = 400;
+            const pictureHeight = 700;
             const result = getPictureDimensions(deviceWidth, deviceHeight, pictureWidth, pictureHeight);
 
             expect(result.width).toBe(deviceWidth);
             expect(result.height).toBeLessThan(deviceHeight);
+            expect(result.width).toBeLessThan(result.height);
         });
     });
 
@@ -68,6 +71,7 @@ describe('Image width is greater than the width of the device.', () => {
 
             expect(result.width).toBe(deviceWidth);
             expect(result.height).toBeLessThan(deviceHeight);
+            expect(result.height).toBeLessThan(result.width);
         });
     });
 });
@@ -83,6 +87,7 @@ describe('Image is larger than the device.', () => {
 
             expect(result.width).toBe(deviceWidth);
             expect(result.height).toBeLessThan(deviceHeight);
+            expect(result.width).toBeLessThan(result.height);
         });
     });
 
@@ -96,6 +101,7 @@ describe('Image is larger than the device.', () => {
 
             expect(result.height).toBe(deviceHeight);
             expect(result.width).toBeLessThan(deviceWidth);
+            expect(result.width).toBeLessThan(result.height);
         });
     });
 
@@ -109,6 +115,7 @@ describe('Image is larger than the device.', () => {
 
             expect(result.height).toBe(deviceHeight);
             expect(result.width).toBeLessThan(deviceWidth);
+            expect(result.height).toBeLessThan(result.width);
         });
     });
 
@@ -122,6 +129,7 @@ describe('Image is larger than the device.', () => {
 
             expect(result.width).toBe(deviceWidth);
             expect(result.height).toBeLessThan(deviceHeight);
+            expect(result.height).toBeLessThan(result.width);
         });
     });
 });
