@@ -78,7 +78,7 @@ class ImageFrame extends React.Component {
         this.frameStyle = updateFrameStyle(this.props);
         this.descriptionStyle = Object.assign(descriptionStyle, {
             color: this.props.descriptionColor,
-            backgroundColor: this.props.descriptionBackgroundColor,
+            backgroundColor: this.props.descriptionBackgroundColor
         });
     }
 
@@ -112,7 +112,7 @@ ImageFrame.propTypes = {
     width: React.PropTypes.number.isRequired,
     loader: React.PropTypes.element.isRequired,
     descriptionColor: React.PropTypes.string.isRequired,
-    descriptionBackgroundColor: React.PropTypes.string.isRequired,
+    descriptionBackgroundColor: React.PropTypes.string.isRequired
 };
 
 export default ImageFrame;

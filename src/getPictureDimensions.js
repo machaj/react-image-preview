@@ -1,8 +1,3 @@
-function getMinorDimenson(imageRatio, mainDimension) {
-    return imageRatio > 1 ? mainDimension / imageRatio : mainDimension * imageRatio;
-}
-
-
 const getPictureDimensions = function getPictureDimensions(deviceWidth, deviceHeight, pictureWidth, pictureHeight) {
     const imageRatio = pictureWidth / pictureHeight;
 
