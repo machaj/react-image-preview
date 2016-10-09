@@ -7,7 +7,7 @@ const prefixStyles = function prefixStyles(styles) {
         const keys = Object.keys(styles);
 
         keys.forEach((key) => {
-            if (styles.hasOwnProperty(key)) {
+            if ({}.hasOwnProperty.call(styles, key)) {
                 prefixedStyles[prefix(key)] = styles[key];
             }
         });

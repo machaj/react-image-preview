@@ -69,13 +69,13 @@ class ImagePreviewHolder extends React.Component {
 
         this.incrementIndex = () => {
             if (this.state.currentIndex < this.images.length - 1) {
-                this.setState({ currentIndex: ++this.state.currentIndex });
+                this.setState({ currentIndex: this.state.currentIndex + 1 });
             }
         };
 
         this.decrementIndex = () => {
             if (this.state.currentIndex > 0) {
-                this.setState({ currentIndex: --this.state.currentIndex });
+                this.setState({ currentIndex: this.state.currentIndex - 1 });
             }
         };
 

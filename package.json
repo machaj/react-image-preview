@@ -52,6 +52,9 @@
     "react-dom": "^15.1.0",
     "webpack": "^1.13.1"
   },
+  "peerDependencies": {
+    "react": ">=15.0.0 <16.0.0"
+  },
   "babel": {
     "presets": [
       "es2015",
