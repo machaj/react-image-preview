@@ -76,7 +76,7 @@ class ImageFrame extends React.Component {
     componentWillMount() {
         this.loadImage();
         this.frameStyle = updateFrameStyle(this.props);
-        this.descriptionStyle = Object.assign(descriptionStyle, {
+        this.descriptionStyle = Object.assign({}, descriptionStyle, {
             color: this.props.descriptionColor,
             backgroundColor: this.props.descriptionBackgroundColor
         });
