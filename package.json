@@ -47,7 +47,7 @@
     "eslint-plugin-react": "^6.9.0",
     "expect": "^1.14.0",
     "mocha": "^3.2.0",
-    "nyc": "^10.1.2",
+    "nyc": "^10.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "webpack": "^2.2.1"
